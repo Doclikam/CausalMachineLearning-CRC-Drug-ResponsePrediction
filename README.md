@@ -10,7 +10,7 @@ fluorouracil(5-FU), oxaliplatin, folfox(oxaliplatin, leucovorin, fluorouracil) r
 
 There is a critical need for predictive models that can identify patients who are most likely to respond to 5-FU based on their clinical and molecular (gene expression) profiles. Such models could guide oncologists in personalizing chemotherapy regimens, improving survival outcomes, and minimizing unnecessary toxicity.
 
-causal Machine learning(ML) can improve help us understand the effects of treatment interventions; hence improving the accuracy and intepretability of models. We can use causal effects to identify how patients and disease characteristics influence the treatment effectiveness. 
+Causal Machine Learning(ML) can improve help us understand the effects of treatment interventions; hence improving the accuracy and intepretability of models. We can use causal effects to identify how patients and disease characteristics influence the treatment effectiveness. 
 
 Dataset:  https://zenodo.org/records/3719291
 
