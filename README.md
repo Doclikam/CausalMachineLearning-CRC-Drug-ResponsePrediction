@@ -1,6 +1,5 @@
 _**Colorectal Cancer Drug Response Prediction**_
 
-
 **Problem Statement**
 
 Colorectal cancer (CRC) is among the leading causes of cancer deaths worldwide.
@@ -32,7 +31,7 @@ CML enables
 -Treatment recommendation based on expected uplift in survival probability
 
 ---
-Methods used include:
+Methods:
 
 -Propensity Score Modeling
 
@@ -41,6 +40,7 @@ Methods used include:
 -Causal Forests / Uplift Random Forest
 
 -X-Learner, S-Learner, T-Learner
-**References**
--
+
+---
+Refrence
 
