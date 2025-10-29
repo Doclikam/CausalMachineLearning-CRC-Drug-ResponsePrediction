@@ -1,15 +1,16 @@
-_**Colorectal Cancer Drug Response Prediction**_
+_**Cuasal Machine Learning - Colorectal Cancer Drug Response Prediction**_
 
 **Problem Statement**
 
 Colorectal cancer (CRC) is among the leading causes of cancer deaths worldwide.
-Chemotherapy with 5-Fluorouracil (5-FU) remains a standard treatment, yet response rates vary widely, some patients benefit significantly, while others suffer toxicity without real therapeutic gain.Despite advances, predicting which patients will respond to different drugs
+Chemotherapy with 5-Fluorouracil (5-FU) remains a standard treatment, yet response rates vary widely; some patients benefit significantly, while others suffer toxicity without real therapeutic gain. Despite advances, predicting which patients will respond to different drugs
 fluorouracil(5-FU), oxaliplatin, folfox(oxaliplatin, leucovorin, fluorouracil) remains a key challenge in oncology.
 
 
-There is a critical need for predictive models that can identify patients who are most likely to respond to 5-FU based on their clinical and molecular (gene expression) profiles. Such models could guide oncologists in personalizing chemotherapy regimens, improving survival outcomes, and minimizing unnecessary toxicity.
+We aim to build and validate a causal machine learning system that personalizes first-line chemotherapy regimens for colorectal cancer patients by estimating individual causal effects of alternative regimens (e.g., FOLFOX vs 5-FU) on clinically meaningful outcomes (e.g., overall survival, progression-free survival, or treatment response). The system will: (a) control for confounding using robust nuisance-modeling (propensity + outcome models), (b) deliver unbiased average treatment effect estimates with valid confidence intervals, (c) discover heterogeneity in treatment effects for personalized treatment recommendations. Such models could guide oncologists in personalizing chemotherapy regimens, improving survival outcomes, and minimizing unnecessary toxicity.
 
-Causal Machine Learning(ML) can improve help us understand the effects of treatment interventions; hence improving the accuracy and intepretability of models. We can use causal effects to identify how patients and disease characteristics influence the treatment effectiveness. Causal machine learning (CML) enables individualized estimation of treatment effects, offering critical advantages over traditional correlation-based methods.
+
+Causal Machine Learning(ML) can help us understand the effects of treatment interventions, hence improving the accuracy and interpretability of models. Causal machine learning (CML) enables individualized estimation of treatment effects, offering critical advantages over traditional correlation-based methods.
 
 Dataset:  https://zenodo.org/records/3719291
 ---
