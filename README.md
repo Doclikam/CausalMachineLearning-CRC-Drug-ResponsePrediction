@@ -3,7 +3,7 @@ _**Cuasal Machine Learning - Colorectal Cancer Drug Response Prediction**_
 **Problem Statement**
 
 Colorectal cancer (CRC) is among the leading causes of cancer deaths worldwide.
-Chemotherapy with 5-Fluorouracil (5-FU) remains a standard treatment, yet response rates vary widely; some patients benefit significantly, while others suffer toxicity without real therapeutic gain. Despite advances, predicting which patients will respond to different drugs
+Chemotherapy with folfox(oxaliplatin, leucovorin, fluorouracil) remains a standard treatment, yet response rates vary widely; some patients benefit significantly, while others suffer toxicity without real therapeutic gain. Despite advances, predicting which patients will respond to different drugs
 fluorouracil(5-FU), oxaliplatin, folfox(oxaliplatin, leucovorin, fluorouracil) remains a key challenge in oncology.
 
 
