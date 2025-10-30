@@ -1,28 +1,29 @@
-_**Cuasal Machine Learning - Colorectal Cancer Drug Response Prediction**_
+_##**Cuasal Machine Learning - Colorectal Cancer Drug Response Prediction**_
 
+---
 **Problem Statement**
+---
 
 Colorectal cancer (CRC) is among the leading causes of cancer deaths worldwide.
-Chemotherapy with folfox(oxaliplatin, leucovorin, fluorouracil) remains a standard treatment, yet response rates vary widely; some patients benefit significantly, while others suffer toxicity without real therapeutic gain. Despite advances, predicting which patients will respond to different drugs
-fluorouracil(5-FU), oxaliplatin, folfox(oxaliplatin, leucovorin, fluorouracil) remains a key challenge in oncology.
+Despite breakthroughs in checkpoint blockade, most colorectal cancers remain resistant to chemotherapy. Yet, conventional chemotherapies (e.g., 5-FU, FOLFOX, oxaliplatin) can elicit immunogenic cell death (ICD) and alter the tumor immune microenvironment (TIME). However, responses vary widely between patients and are partly determined by genomic and immunologic heterogeneity. Chemotherapy with folfox(oxaliplatin, leucovorin, fluorouracil) remains a standard treatment, while fluorouracil(5-FU), oxaliplatin are also used.
 
-
-We aim to build and validate a causal machine learning system that personalizes first-line chemotherapy regimens for colorectal cancer patients by estimating individual causal effects of alternative regimens (e.g., FOLFOX vs 5-FU) on clinically meaningful outcomes (e.g., overall survival, progression-free survival, or treatment response). The system will: (a) control for confounding using robust nuisance-modeling (propensity + outcome models), (b) deliver unbiased average treatment effect estimates with valid confidence intervals, (c) discover heterogeneity in treatment effects for personalized treatment recommendations. Such models could guide oncologists in personalizing chemotherapy regimens, improving survival outcomes, and minimizing unnecessary toxicity.
-
-
-Causal Machine Learning(ML) can help us understand the effects of treatment interventions, hence improving the accuracy and interpretability of models. Causal machine learning (CML) enables individualized estimation of treatment effects, offering critical advantages over traditional correlation-based methods.
-
-Dataset:  https://zenodo.org/records/3719291
----
-**Project Objectives**
-
-- Build predictive and causal models to identify patients most likely to respond to 5-FU, Oxaliplatin, or FOLFOX
-- Integrate clinical + gene expression (molecular) data to improve personalization
-- Estimate Individualized Treatment Effects (ITE) to support treatment-specific decisions
-- Provide interpretability using SHAP, Causal SHAP, and feature influence on treatment effects
-- Deploy a prototype clinical decision support app for oncologis
+key problems with chemotherapy treatment
+1. Response to treatment varies widely from patient to patient
+2. Genetic biomarkers may determine which patients benefit
+3. Patients may get toxicity without therapeutic gain
+4. There is no universal best therapy
 
 ---
+**Problem Statement**
+___
+What is the causal effect of each chemotherapy option on patient outcomes, and how does that vary by genetic profile?
+
+___
+**Goals**
+___
+
+We aim to build and validate a causal machine learning system that personalizes first-line chemotherapy regimens for colorectal cancer patients by estimating individual causal effects of alternative regimens (e.g., FOLFOX vs 5-FU) on clinically meaningful outcomes (e.g., overall survival,and treatment response). The system will: (a) control for confounding using robust nuisance-modeling (propensity + outcome models), (b) deliver unbiased average treatment effect estimates with valid confidence intervals, (c) discover heterogeneity in treatment effects for personalized treatment recommendations. Such models could guide oncologists in personalizing chemotherapy regimens, improving survival outcomes, and minimizing unnecessary toxicity.
+
 CML enables
 
 -Counterfactual inference (what would happen with vs. without treatment)
@@ -31,16 +32,71 @@ CML enables
 
 -Treatment recommendation based on expected uplift in survival probability
 
+
+
+Dataset:  https://zenodo.org/records/3719291
 ---
-Methods:
+**Methodology**
+___
 
--Propensity Score Modeling
+        ┌────────────────────────────────────────┐
+        │ Clinical Problem Formulation           │
+        │ • Define estimand (ATE, CATE, ITE)     │
+        │ • Treatment groups & outcomes          │
+        └───────────────────────────────┬────────┘
+                                        │
+                          (Causal Assumptions: Ignorability,
+                           Positivity, Consistency/SUTVA)
+                                        │
+        ┌───────────────────────────────▼───────────────────────────┐
+        │ Data Integration & Cohort Construction                    │
+        │ • Merge multi-treatment datasets                          │
+        │ • Assign treatment indicator (T)                          │
+        │ • Split Train/Test BEFORE causal modeling                 │
+        └───────────────────────────────┬───────────────────────────┘
+                                        │
+        ┌───────────────────────────────▼───────────────────────────┐
+        │ Preprocessing                                                  │
+        │ • Missing data imputation                                      │
+        │ • Feature scaling/encoding (600+ genomics)                     │
+        │ • Remove leakage variables / reduce dimensionality            │
+        └───────────────────────────────┬───────────────────────────┘
+                                        │
+        ┌───────────────────────────────▼───────────────────────────┐
+        │ Propensity Score Estimation                                 │
+        │ • Logistic/GBM/Random Forest                                │
+        │ • Compute IPTW / Stabilized weights                         │
+        │ → Check Covariate Balance (SMD, Overlap plots)              │
+        └───────────────────────────────┬───────────────────────────┘
+                                        │
+        ┌───────────────────────────────▼───────────────────────────┐
+        │ Causal ML Outcome Modeling                                  │
+        │ • DR-Learner OR Causal Forest                               │
+        │ • Estimate factual outcomes + pseudo-outcomes               │
+        │ → Predict Individual Treatment Effect (ITE)                 │
+        └───────────────────────────────┬───────────────────────────┘
+                                        │
+        ┌───────────────────────────────▼───────────────────────────┐
+        │ Effect Estimation & Interpretation                          │
+        │ • ATE, CATE, ITE with Confidence Intervals                  │
+        │ • Gene signatures & subgroup discovery                      │
+        │ • Uplift curves / ICE plots                                 │
+        └───────────────────────────────┬───────────────────────────┘
+                                        │
+        ┌───────────────────────────────▼───────────────────────────┐
+        │ Causal Evaluation & Validation                              │
+        │ • Policy Risk, PEHE proxy                                   │
+        │ • Sensitivity (Rosenbaum bounds)                            │
+        │ • Positivity durability check                               │
+        └───────────────────────────────┬───────────────────────────┘
+                                        │
+                          ┌─────────────▼──────────────┐
+                          │ Clinical Decision Support   │
+                          │ • Patient-level benefit     │
+                          │ • Recommended treatment     │
+                          │ • Confidence reporting      │
+                          └────────────────────────────┘
 
--Doubly Robust Learners (DR-Learner)
-
--Causal Forests / Uplift Random Forest
-
--X-Learner, S-Learner, T-Learner
 
 ---
 Refrence
