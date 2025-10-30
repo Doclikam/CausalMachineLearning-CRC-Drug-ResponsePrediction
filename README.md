@@ -31,6 +31,18 @@ Outcome 	   Response or Survival metric
 
 
 
+**Directed Acyclic Graph - DAG**
+
+   X_c (Clinical Confounders) ─────────┐
+                │                      │
+                ▼                      ▼
+        Treatment (T) ───────────────► Outcome (Y)
+                ▲                      ▲
+                │                      │
+   X_g (Genomic Features) ────────────
+
+
+
 **Modeling goal:   ITEi​(t1​,t2​)=Yi​(t1​)−Yi​(t2​)**
 
 
