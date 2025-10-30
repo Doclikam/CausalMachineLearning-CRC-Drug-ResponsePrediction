@@ -1,4 +1,4 @@
-_##**Cuasal Machine Learning - Colorectal Cancer Drug Response Prediction**_
+##**Cuasal Machine Learning - Colorectal Cancer Drug Response Prediction**
 
 ---
 **Problem Statement**
@@ -13,9 +13,6 @@ key problems with chemotherapy treatment
 3. Patients may get toxicity without therapeutic gain
 4. There is no universal best therapy
 
----
-**Problem Statement**
-___
 What is the causal effect of each chemotherapy option on patient outcomes, and how does that vary by genetic profile?
 
 ___
