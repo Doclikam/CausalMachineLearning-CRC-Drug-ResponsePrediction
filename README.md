@@ -21,20 +21,22 @@ ___
 
 We aim to build and validate a causal machine learning system that personalizes first-line chemotherapy regimens for colorectal cancer patients by estimating individual causal effects of alternative regimens (e.g., FOLFOX vs 5-FU) on clinically meaningful outcomes (e.g., overall survival, and treatment response). The system will: (a) control for confounding using robust nuisance-modeling (propensity + outcome models), (b) deliver unbiased average treatment effect estimates with valid confidence intervals, (c) discover heterogeneity in treatment effects for personalized treatment recommendations. Such models could guide oncologists in personalizing chemotherapy regimens, improving survival outcomes, and minimizing unnecessary toxicity.
 
-Component	Role
+**Component**	   **Role**
 
-Treatment	3 arms: 5-FU vs. Oxaliplatin vs. FOLFOX
+Treatment	   3 arms: 5-FU vs. Oxaliplatin vs. FOLFOX
 
-Confounders	Genetics, Clinical features
+Confounders	   Genetics, Clinical features
 
-Outcome 	Response or Survival metric
-
-
-Modeling goal: ITEi​(t1​,t2​)=Yi​(t1​)−Yi​(t2​)
+Outcome 	   Response or Survival metric
 
 
 
-CML enables
+Modeling goal:  ITEi​(t1​,t2​)=Yi​(t1​)−Yi​(t2​)
+
+
+
+
+**CML enables**
 
 -Counterfactual inference (what would happen with vs. without treatment)
 
