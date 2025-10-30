@@ -31,7 +31,7 @@ Outcome 	   Response or Survival metric
 
 
 
-Modeling goal:  ITEi​(t1​,t2​)=Yi​(t1​)−Yi​(t2​)
+**Modeling goal:   ITEi​(t1​,t2​)=Yi​(t1​)−Yi​(t2​)**
 
 
 
