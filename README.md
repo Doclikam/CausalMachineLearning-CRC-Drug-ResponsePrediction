@@ -36,6 +36,7 @@ Outcome 	   Response or Survival metric
 
 
 A critical limitation in most traditional statistical and machine learning (ML) methods applied to clinical outcomes data is their correlational nature. These methods are designed to identify associations between variables but are not equipped to answer causal questions, which are central to understanding treatment effects.
+Causal machine learning (CML) offers a promising solution by explicitly modeling causal effects rather than associations
 
 **CML enables**
 
