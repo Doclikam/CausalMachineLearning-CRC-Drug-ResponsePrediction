@@ -1,75 +1,74 @@
 ## **Causal Effects of Concurrent Chemoradiotherapy vs Radiotherapy Alone in Head & Neck Cancer- Survival Outcome**
+---
+
+Head and Neck Cancers (HNCs) account for > 900,000 cases and ~500,000 deaths annually worldwide. Radiotherapy (RT) is a foundational treatment. However, many patients receive chemoradiotherapy (ChemoRT), adding systemic chemotherapy to improve tumor control. Radiotherapy (RT) forms the cornerstone of curative treatment for locally advanced disease. In many patients, particularly those with aggressive tumor biology or advanced nodal involvement((T,N,M stage) chemotherapy is added concurrently with radiotherapy (chemoradiotherapy, ChemoRT) with the aim of enhancing tumor cytotoxicity.
+
+While randomized trials suggest benefit in select populations, real-world treatment practices differ substantially:
+variations in tumor site, HPV status, smoking behavior, disease staging, and health system factors all influence whether chemotherapy is administered. Chemotherapy also carries major toxicity: swallowing impairment, organ injury, hospitalization, and long-term disability. 
+
+Thus, the clinical dilemma persists:
+
+**Does adding chemotherapy to radiotherapy improve survival for real-world patientsand for whom does it help or harm?**
+
+This is a counterfactual question: what would have happened to the same patient had they received the alternative treatment? Traditional machine learning cannot answer this:prediction is not causation, making causal inference essential.
 
 ---
-**Problem Statement**
+## Objective
 ---
-What is the causal effect of adding chemotherapy
-to radiotherapy at baseline on overall survival
-in real-world head & neck cancer patients?
+- To estimate the causal effect of adding chemotherapy to radiotherapy on overall survival in head and neck cancer patients treated in routine clinical practice, using the RADCURE multi-institutional cohort.
+- personalized oncology decisions
+- Tosafer treatment pathways
+- To cost-effective cancer care
 
 
 ### Primary Estimand (Part 1 — Baseline Total Effect)
 
 We estimate the **total effect** of treatment \(A\) on survival \(Y\):
+We define the Average Treatment Effect (ATE) as:
 
-\[
-\TE{ATE} = E[Y^{A=1}] - E[Y^{A=0}]
-\]
+{ATE} = E[Y^{A=1}] - E[Y^{A=0}]
 
-Operationalized as a hazard ratio via IPTW-weighted Cox regression:
+where:
 
-\[
-HR = \frac{\lambda(t \mid A=1)}{\lambda(t \mid A=0)}
-\]
+Y(1) represents survival time had all patients received ChemoRT, and
 
-Where:
-- \( A = 1 \): concurrent ChemoRT
-- \( A = 0 \): RT-alone
-- \( Y \): time-aligned overall survival (OS)
+Y(0) represents survival time had all patients received RT alone.
 
 ### Secondary Estimand (Part 2 — Dynamic Treatment Strategies)
 
 Radiation dose and fractionation evolve over time and are influenced by chemotherapy. We model time-varying regimen effects using Marginal Structural Models (MSMs):
 
-\[
-E[Y^{\bar{a}}]
-\]
-under hypothetical delivered treatment policies \(\bar{a}_t\)
-___
-**Goals**
-___
-
-## 3. Causal Model (DAG)
-
-A["Tumor Severity (TNM, Stage)"] --> T["ChemoRT Decision"]
-B["HPV & Primary Site"] --> T
-C["Smoking, Age, Sex, ECOG"] --> T
-T --> M["Delivered RT Dose / Fractions"]
-A --> Y["Overall Survival"]
-B --> Y
-C --> Y
-M --> Y
-
-**CML enables**
-
--Counterfactual inference (what would happen with vs. without treatment)
-
--Heterogeneous treatment effect estimation (HTE)
-
--Treatment recommendation based on expected uplift in survival probability
-
-### Causal Assumptions
-
-| Assumption | Definition | How Verified |
-|-----------|------------|--------------|
-| Exchangeability | No unmeasured confounding | Domain-validated covariates + missingness modeling |
-| Positivity | All strata have both treatments | Propensity overlap diagnostics |
-| Consistency | Well-defined exposure | Binary, time-aligned intervention |
-| Correct model | PS & outcome well-specified | Model diagnostics + sensitivity analyses |
 ---
-**Methodology**
+## Causal Framework
+---
+Conditional Exchangeability:
+Given baseline confounders 𝑋 treatment assignment 𝐴 is independent of potential outcomes:
+
+                                        Y(a)⊥A∣X
+
+Positivity:
+Every combination of confounders must have a non-zero probability of receiving either treatment.
+
+Consistency (SUTVA):
+Each patient’s outcome corresponds to the treatment they received, with no interference across patients.
+
+
+To justify these assumptions, we developed a Directed Acyclic Graph (DAG) summarizing our causal model:
+
+Tumor Severity ────────► Treatment (ChemoRT)
+     │                    │  ▲
+     │                    │  │
+     └────────► Biological Effect (HPV) ───► Survival
+     │
+     └────► Health Status (ECOG) ─────────► Survival
+     │
+     └────► Smoking / Demographics ───────► Survival
+
+
+---
+## Methodology
 ___
-We use the **RADCURE** clinical dataset (N > 3,400), a multi-institutional real-world registry of head and neck cancer patients treated with radiotherapy.
+We use the **RADCURE** clinical dataset (N > 3,400), a multi-institutional real-world registry of head and neck cancer patients treated with radiotherapy alone, radiotherapy+chemotherapy and radiotherapy+EGFRI
 
 Collected variables include:
 - Baseline demographics and risk factors
@@ -79,7 +78,8 @@ Collected variables include:
 - Survival outcomes (death, last follow-up, recurrence)
 
 ---
-### 4.2 Time Zero and Survival Outcome Construction
+**Time Zero and Survival Outcome Construction**
+
 To avoid immortal-time bias, **time zero** is set to the **start of radiotherapy** (`RT Start`).  
 Overall Survival (OS) is defined as:
 
