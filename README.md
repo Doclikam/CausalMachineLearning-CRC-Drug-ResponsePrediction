@@ -41,13 +41,11 @@ ___
 
 ## 3. Causal Model (DAG)
 
-```mermaid
-flowchart LR
-A[Tumor Severity\nStage, TNM] --> T(ChemoRT Decision)
-B[HPV, Primary Site] --> T
-C[Smoking, Age, Sex, ECOG] --> T
-T --> M[Delivered RT Dose/Fractions]
-A --> Y[Survival]
+A["Tumor Severity (TNM, Stage)"] --> T["ChemoRT Decision"]
+B["HPV & Primary Site"] --> T
+C["Smoking, Age, Sex, ECOG"] --> T
+T --> M["Delivered RT Dose / Fractions"]
+A --> Y["Overall Survival"]
 B --> Y
 C --> Y
 M --> Y
