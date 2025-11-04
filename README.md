@@ -13,7 +13,7 @@ in real-world head & neck cancer patients?
 We estimate the **total effect** of treatment \(A\) on survival \(Y\):
 
 \[
-\text{ATE} = E[Y^{A=1}] - E[Y^{A=0}]
+\TE{ATE} = E[Y^{A=1}] - E[Y^{A=0}]
 \]
 
 Operationalized as a hazard ratio via IPTW-weighted Cox regression:
