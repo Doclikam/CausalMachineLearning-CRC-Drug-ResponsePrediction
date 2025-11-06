@@ -41,6 +41,8 @@ Radiation dose and fractionation evolve over time and are influenced by chemothe
 ---
 ## Causal Framework
 ---
+Confounder :A variable that causes both the treatment and the outcome
+
 Conditional Exchangeability:
 Given baseline confounders 𝑋 treatment assignment 𝐴 is independent of potential outcomes:
 
