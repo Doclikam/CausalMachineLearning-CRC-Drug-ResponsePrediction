@@ -20,16 +20,6 @@ This is a counterfactual question: what would have happened to the same patient 
 - Tosafer treatment pathways
 - To cost-effective cancer care
 
-Age,sex,HPV, TNM staging, ECOG, path Smoking.
-
-      ↓        ↓
-      ↓  Treatment (Chemo+RT vs RT)
-      ↓        ↓
-   ┌────────────┬────────────┐
-   ↓            ↓            ↓
-OS Event     PFS Event    Recurrence
-
-
 ### Primary Estimand (Part 1 — Baseline Total Effect)
 
 We estimate the **total effect** of treatment \(A\) on survival \(Y\):
