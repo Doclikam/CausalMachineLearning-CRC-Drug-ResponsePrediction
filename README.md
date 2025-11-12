@@ -8,17 +8,17 @@ variations in tumor site, HPV status, smoking behavior, disease staging, and hea
 
 Thus, the clinical dilemma persists:
 
-**Does adding chemotherapy to radiotherapy improve survival for real-world patientsand for whom does it help or harm?**
+**Does adding chemotherapy to radiotherapy improve survival for real-world patients for whom does it help or harm?**
 
-This is a counterfactual question: what would have happened to the same patient had they received the alternative treatment? Traditional machine learning cannot answer this:prediction is not causation, making causal inference essential.
+This is a counterfactual question: what would have happened to the same patient had they received the alternative treatment? Traditional machine learning cannot answer this:  correlation is not causation, making causal inference essential.
 
 ---
 ## Objective
 ---
 - To estimate the causal effect of adding chemotherapy to radiotherapy on overall survival in head and neck cancer patients treated in routine clinical practice, using the RADCURE multi-institutional cohort.
-- personalized oncology decisions
-- Tosafer treatment pathways
-- To cost-effective cancer care
+- To personalize oncology decisions
+- To enhance safer treatment pathways
+- To provide cost-effective cancer care
 
 ### Primary Estimand (Part 1 — Baseline Total Effect)
 
