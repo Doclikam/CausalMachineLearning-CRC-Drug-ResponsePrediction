@@ -3,8 +3,7 @@
 
 Head and Neck Cancers (HNCs) account for > 900,000 cases and ~500,000 deaths annually worldwide. Radiotherapy (RT) is a foundational treatment. treatment strategy remains a challenge. More than two-third of head and neck cancer patients require radiation therapy, which can be given either alone or concurrently with chemotherapy. However, many patients receive chemoradiotherapy (ChemoRT), adding systemic chemotherapy to improve tumor control. Radiotherapy (RT) forms the cornerstone of curative treatment for locally advanced disease. In many patients, particularly those with aggressive tumor biology or advanced nodal involvement((T,N,M stage) chemotherapy is added concurrently with radiotherapy (chemoradiotherapy, ChemoRT) with the aim of enhancing tumor cytotoxicity.
 
-While randomized trials suggest benefit in select populations, real-world treatment practices differ substantially:
-variations in tumor site, HPV status, smoking behavior, disease staging, and health system factors all influence whether chemotherapy is administered. Chemotherapy also carries major toxicity: swallowing impairment, organ injury, hospitalization, and long-term disability. 
+While randomized trials suggest benefit in select populations, real-world treatment practices differ substantially: variations in tumor site, HPV status, smoking behavior, disease staging, and health system factors all influence whether chemotherapy is administered. Chemotherapy also carries major toxicity: swallowing impairment, organ injury, hospitalization, and long-term disability. 
 
 Thus, the clinical dilemma persists:
 
@@ -15,10 +14,13 @@ This is a counterfactual question: what would have happened to the same patient 
 ---
 ## Objective
 ---
-- To estimate the causal effect of adding chemotherapy to radiotherapy on overall survival in head and neck cancer patients treated in routine clinical practice, using the RADCURE multi-institutional cohort.
-- To personalize oncology decisions
-- To enhance safer treatment pathways
-- To provide cost-effective cancer care
+-To estimate Overall treatment effect (ATE)
+
+- To estimate Individualized effects (CATE)
+
+- To estimate Time-varying treatment effects
+
+- To estimate Survival differences between RT and ChemoRT
 
 ### Primary Estimand (Part 1 — Baseline Total Effect)
 
@@ -35,7 +37,14 @@ Y(0) represents survival time had all patients received RT alone.
 
 ### Secondary Estimand (Part 2 — Dynamic Treatment Strategies)
 
-Radiation dose and fractionation evolve over time and are influenced by chemotherapy. We model time-varying regimen effects using Marginal Structural Models (MSMs):
+Radiation dose and fractionation evolve over time and are influenced by chemotherapy. We model time-varying regimen effects using Marginal Structural Models (MSMs)
+(CATE) for a patient with covariates X=xX = xX=x is:
+CATE(x)=E[Y(1)−Y(0)∣X=x]
+Where:
+Y(1)Y(1)Y(1) = potential outcome if treated
+
+
+Y(0)Y(0)Y(0) = potential outcome if untreated
 
 ---
 ## Causal Framework
@@ -78,11 +87,7 @@ Collected variables include:
 - Treatment details (start date, chemotherapy administration)
 - Survival outcomes (death, last follow-up, recurrence)
 
----
-**Time Zero and Survival Outcome Construction**
 
-To avoid immortal-time bias, **time zero** is set to the **start of radiotherapy** (`RT Start`).  
-Overall Survival (OS) is defined as:
 
 ```math
 OS_i = \text{date\_of\_death}_i - \text{RT\_start}_i
