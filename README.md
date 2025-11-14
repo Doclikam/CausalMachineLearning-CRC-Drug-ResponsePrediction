@@ -65,14 +65,8 @@ Each patient’s outcome corresponds to the treatment they received, with no int
 
 To justify these assumptions, we developed a Directed Acyclic Graph (DAG) summarizing our causal model:
 
-Tumor Severity ────────► Treatment (ChemoRT)
-     │                    │  ▲
-     │                    │  │
-     └────────► Biological Effect (HPV) ───► Survival
-     │
-     └────► Health Status (ECOG) ─────────► Survival
-     │
-     └────► Smoking / Demographics ───────► Survival
+
+<img width="1024" height="768" alt="DAG Flowchart Diagram Template (1)" src="https://github.com/user-attachments/assets/a5466bd8-1211-4cb9-8cf6-2b570820c9ca" />
 
 
 ---
@@ -87,6 +81,10 @@ Collected variables include:
 - HPV status where clinically relevant
 - Treatment details (start date, chemotherapy administration)
 - Survival outcomes (death, last follow-up, recurrence)
+<img width="1024" height="1536" alt="Methodologyworkflow Image Nov 14, 2025, 09_52_33 AM" src="https://github.com/user-attachments/assets/0e93321a-019d-470e-85dd-17c580233941" />
 
- <img width="15" height="3" alt="image" src="https://github.com/user-attachments/assets/00b89243-f095-46b8-904b-1c8c36be87e9" />
+
+
+
+
 
