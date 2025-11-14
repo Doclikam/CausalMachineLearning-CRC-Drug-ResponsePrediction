@@ -79,6 +79,7 @@ Tumor Severity ────────► Treatment (ChemoRT)
 ## Methodology
 ___
 We use the **RADCURE** clinical dataset (N > 3,400), a multi-institutional real-world registry of head and neck cancer patients treated with radiotherapy alone, radiotherapy+chemotherapy and radiotherapy+EGFRI
+https://www.cancerimagingarchive.net/collection/radcure/
 
 Collected variables include:
 - Baseline demographics and risk factors
@@ -87,7 +88,5 @@ Collected variables include:
 - Treatment details (start date, chemotherapy administration)
 - Survival outcomes (death, last follow-up, recurrence)
 
-
-
-<img width="15" height="3" alt="image" src="https://github.com/user-attachments/assets/00b89243-f095-46b8-904b-1c8c36be87e9" />
+ <img width="15" height="3" alt="image" src="https://github.com/user-attachments/assets/00b89243-f095-46b8-904b-1c8c36be87e9" />
 
