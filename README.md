@@ -89,5 +89,5 @@ Collected variables include:
 
 
 
-```math
-OS_i = \text{date\_of\_death}_i - \text{RT\_start}_i
+<img width="15" height="3" alt="image" src="https://github.com/user-attachments/assets/00b89243-f095-46b8-904b-1c8c36be87e9" />
+
